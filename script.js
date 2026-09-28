@@ -10,12 +10,47 @@ const supabaseClient = supabase.createClient(
 );
 
 // =========================
+// VERIFICAR LOGIN
+// =========================
+
+(async () => {
+
+    const {
+        data: { session }
+    } = await supabaseClient.auth.getSession();
+
+    const paginaAtual =
+        window.location.pathname;
+
+    const estaNoLogin =
+        paginaAtual.includes("login.html");
+
+    if (!session && !estaNoLogin) {
+
+        window.location.href =
+            "login.html";
+
+    }
+
+})();
+
+// =========================
 // CREATE
 // =========================
 
 const form = document.getElementById("formItem");
 
 if (form) {
+
+    const idEditar =
+        localStorage.getItem("itemEditar");
+
+    // Carregar dados para edição
+    if (idEditar) {
+
+        carregarItemParaEditar(idEditar);
+
+    }
 
     form.addEventListener("submit", async (event) => {
 
@@ -33,18 +68,23 @@ if (form) {
         const status =
             document.getElementById("status").value;
 
-        if (
-            !nome ||
-            !quantidade ||
-            !categoria ||
-            !status
-        ) {
-            alert("Preencha todos os campos!");
-            return;
-        }
+        let error;
 
-        const { error } =
-            await supabaseClient
+        if (idEditar) {
+
+            ({ error } = await supabaseClient
+                .from("item")
+                .update({
+                    nome,
+                    quantidade,
+                    categoria,
+                    status
+                })
+                .eq("id", Number(idEditar)));
+
+        } else {
+
+            ({ error } = await supabaseClient
                 .from("item")
                 .insert([
                     {
@@ -53,22 +93,24 @@ if (form) {
                         categoria,
                         status
                     }
-                ]);
+                ]));
+
+        }
 
         if (error) {
 
             console.error(error);
 
-            alert(
-                "Erro ao cadastrar item!"
-            );
+            alert("Erro ao salvar item!");
 
             return;
         }
 
-        alert(
-            "Item cadastrado com sucesso!"
+        localStorage.removeItem(
+            "itemEditar"
         );
+
+        alert("Item salvo com sucesso!");
 
         window.location.href =
             "index.html";
@@ -154,38 +196,19 @@ carregarItens();
 
 async function excluirItem(id) {
 
+    alert("ID recebido: " + id);
+
     const confirmar =
-        confirm(
-            "Deseja excluir este item?"
-        );
+        confirm("Deseja excluir este item?");
 
     if (!confirmar) return;
 
     const { data, error } =
-    await supabaseClient
-        .from("item")
-        .delete()
-        .eq("id", id)
-        .select();
-
-console.log("ID:", id);
-console.log("DATA:", data);
-console.log("ERROR:", error);
-
-    if (error) {
-
-        console.error(error);
-
-        alert(
-            "Erro ao excluir item!"
-        );
-
-        return;
-    }
-
-    alert(
-        "Item excluído com sucesso!"
-    );
+        await supabaseClient
+            .from("item")
+            .delete()
+            .eq("id", Number(id))
+            .select();
 
     carregarItens();
 
@@ -207,31 +230,89 @@ function editarItem(id) {
 
 }
 
-const pesquisa = document.getElementById("pesquisa");
+async function carregarItemParaEditar(id) {
+
+    const { data, error } =
+        await supabaseClient
+            .from("item")
+            .select("*")
+            .eq("id", Number(id))
+            .single();
+
+    if (error) {
+
+        console.error(error);
+        return;
+
+    }
+
+    document.getElementById("nome").value =
+        data.nome;
+
+    document.getElementById("quantidade").value =
+        data.quantidade;
+
+    document.getElementById("categoria").value =
+        data.categoria;
+
+    document.getElementById("status").value =
+        data.status;
+
+}
+
+// =========================
+// PESQUISA
+// =========================
+
+const pesquisa =
+    document.getElementById(
+        "pesquisa"
+    );
 
 if (pesquisa) {
 
-    pesquisa.addEventListener("keyup", () => {
+    pesquisa.addEventListener(
+        "keyup",
+        () => {
 
-        const texto =
-            pesquisa.value.toLowerCase();
+            const texto =
+                pesquisa.value
+                    .toLowerCase();
 
-        const linhas =
-            document.querySelectorAll(
-                "#tabelaItens tr"
+            const linhas =
+                document.querySelectorAll(
+                    "#tabelaItens tr"
+                );
+
+            linhas.forEach(
+                linha => {
+
+                    const conteudo =
+                        linha.textContent
+                            .toLowerCase();
+
+                    linha.style.display =
+                        conteudo.includes(texto)
+                            ? ""
+                            : "none";
+
+                }
             );
 
-        linhas.forEach(linha => {
+        }
+    );
 
-            const conteudo =
-                linha.textContent.toLowerCase();
+}
 
-            linha.style.display =
-                conteudo.includes(texto)
-                    ? ""
-                    : "none";
-        });
+// =========================
+// LOGOUT
+// =========================
 
-    });
+async function logout() {
+
+    await supabaseClient.auth.signOut();
+
+    window.location.href =
+        "login.html";
 
 }
