@@ -9,7 +9,9 @@ body{
     background:#F5F5F5;
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 header{
     background:#1E3A8A;
@@ -38,21 +40,30 @@ nav a{
     color:white;
     text-decoration:none;
     font-size:16px;
+    transition:.3s;
 }
 
-/* MAIN */
+nav a:hover{
+    opacity:.8;
+}
+
+/* =========================
+   MAIN
+========================= */
 
 main{
     padding:40px 35px;
 }
 
-h1{
+main h1{
     font-size:32px;
     color:#111827;
     margin-bottom:25px;
 }
 
-/* TOPO */
+/* =========================
+   TOPO
+========================= */
 
 .topo-pagina{
     display:flex;
@@ -62,10 +73,11 @@ h1{
     margin-bottom:25px;
 }
 
-/* BOTÃO NOVO ITEM */
+/* =========================
+   BOTÃO NOVO ITEM
+========================= */
 
 .btn-novo{
-
     background:#2563EB;
     color:white;
 
@@ -76,9 +88,17 @@ h1{
     text-decoration:none;
 
     font-weight:600;
+
+    transition:.3s;
 }
 
-/* PESQUISA */
+.btn-novo:hover{
+    background:#1D4ED8;
+}
+
+/* =========================
+   PESQUISA
+========================= */
 
 .pesquisa-container{
     margin-bottom:25px;
@@ -86,52 +106,92 @@ h1{
 
 #pesquisa{
 
-    width:320px;
-    height:40px;
+    width:350px;
+    height:45px;
 
     border:1px solid #D1D5DB;
-    border-radius:8px;
+    border-radius:10px;
 
     padding:0 15px;
+
+    background:#FFFFFF;
+
+    transition:.3s;
 }
 
-/* TABELA */
+#pesquisa:focus{
+
+    border-color:#2563EB;
+
+    box-shadow:0 0 5px rgba(37,99,235,.25);
+}
+
+/* =========================
+   TABELA
+========================= */
 
 .tabela-container{
 
-    background:#FAFAFA;
+    background:#FFFFFF;
 
-    border-radius:8px;
+    border-radius:12px;
 
     overflow:hidden;
 
-    box-shadow:0 2px 8px rgba(0,0,0,.05);
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
 }
 
 table{
+
     width:100%;
+
     border-collapse:collapse;
 }
 
 thead{
-    background:#F3F4F6;
+
+    background:#1E3A8A;
+
+    color:white;
 }
 
 th,
 td{
+
     padding:18px;
+
     text-align:left;
 }
 
+th{
+
+    font-weight:600;
+}
+
 td{
+
     border-bottom:1px solid #E5E7EB;
 }
 
-/* STATUS */
+tbody tr{
+
+    transition:.3s;
+}
+
+tbody tr:hover{
+
+    background:#F8FAFC;
+}
+
+/* =========================
+   STATUS
+========================= */
 
 .status{
     padding:6px 12px;
+
     border-radius:20px;
+
     font-size:14px;
 }
 
@@ -145,32 +205,55 @@ td{
     color:#991B1B;
 }
 
-/* AÇÕES */
+/* =========================
+   AÇÕES
+========================= */
 
 .btn-acao{
 
-    background:none;
+    width:35px;
+    height:35px;
+
     border:none;
+
+    border-radius:8px;
+
+    background:#F3F4F6;
 
     cursor:pointer;
 
-    font-size:18px;
+    font-size:16px;
+
+    margin-right:5px;
+
+    transition:.3s;
 }
 
-/* FORMULÁRIO */
+.btn-acao:hover{
+
+    background:#E5E7EB;
+}
+
+/* =========================
+   FORMULÁRIO
+========================= */
 
 .card-formulario{
 
-    width:550px;
+    width:450px;
 
-    background:#FAFAFA;
+    background:#FFFFFF;
 
-    padding:30px;
+    border:1px solid #E5E7EB;
 
-    border:1px solid #D1D5DB;
+    border-radius:12px;
 
-    border-radius:8px;
+    padding:35px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.10);
 }
+
+
 
 form{
     display:flex;
@@ -178,51 +261,72 @@ form{
 }
 
 label{
+    font-size:14px;
+    font-weight:600;
 
-    font-size:16px;
+    margin-top:12px;
+    margin-bottom:5px;
 
-    margin-top:15px;
-    margin-bottom:8px;
+    color:#111827;
 }
 
 input,
 select{
-
-    height:40px;
+    height:45px;
 
     border:1px solid #D1D5DB;
-
     border-radius:8px;
 
-    padding:0 12px;
+    padding:0 15px;
+
+    font-size:14px;
+
+    background:white;
+
+    outline:none;
+
+    transition:.3s;
 }
 
-/* BOTÕES */
+input:focus,
+select:focus{
+    border-color:#2563EB;
+
+    box-shadow:0 0 5px rgba(37,99,235,.25);
+}
+
+/* =========================
+   BOTÕES
+========================= */
 
 .botoes{
-
-    margin-top:30px;
-
     display:flex;
-    gap:20px;
+    gap:15px;
+
+    margin-top:25px;
 }
 
 .btn-salvar{
-
     background:#2563EB;
     color:white;
 
     border:none;
-
     border-radius:8px;
 
     padding:12px 24px;
 
     cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.btn-salvar:hover{
+    background:#1D4ED8;
 }
 
 .btn-cancelar{
-
     background:#DC2626;
     color:white;
 
@@ -231,12 +335,170 @@ select{
     border-radius:8px;
 
     padding:12px 24px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-weight:600;
+
+    transition:.3s;
 }
 
-/* MASCOTE */
+.btn-cancelar:hover{
+    background:#B91C1C;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+.login-container{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#1E3A8A;
+
+    padding:20px;
+}
+
+.card-login{
+
+    width:420px;
+
+    background:#FFFFFF;
+
+    border-radius:16px;
+
+    padding:40px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+
+    border:1px solid #E5E7EB;
+}
+
+.titulo-login{
+
+    text-align:center;
+
+    color:#1E3A8A;
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    margin-bottom:8px;
+}
+
+.subtitulo-login{
+
+    text-align:center;
+
+    color:#6B7280;
+
+    margin-bottom:30px;
+
+    font-size:14px;
+}
+
+.btn-login{
+
+    margin-top:25px;
+
+    width:100%;
+
+    height:45px;
+
+    background:#2563EB;
+
+    color:white;
+
+    border:none;
+
+    border-radius:8px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.btn-login:hover{
+
+    background:#1D4ED8;
+}
+
+.card-login input{
+
+    height:45px;
+
+    border:1px solid #D1D5DB;
+
+    border-radius:8px;
+
+    padding:0 15px;
+
+    margin-bottom:15px;
+
+    font-size:14px;
+}
+
+.card-login input:focus{
+
+    border-color:#2563EB;
+
+    box-shadow:0 0 5px rgba(37,99,235,.25);
+}
+
+/* =========================
+   CRIAR CONTA
+========================= */
+
+.criar-conta{
+
+    margin-top:20px;
+
+    padding-top:20px;
+
+    border-top:1px solid #E5E7EB;
+
+    text-align:center;
+
+    color:#6B7280;
+
+    font-size:14px;
+}
+
+.criar-conta a{
+
+    display:block;
+
+    margin-top:8px;
+
+    color:#2563EB;
+
+    text-decoration:none;
+
+    font-weight:600;
+}
+
+.criar-conta a:hover{
+
+    color:#1D4ED8;
+}
+
+/* =========================
+   MASCOTE
+========================= */
 
 .mascote{
-
     position:fixed;
 
     right:20px;
@@ -247,210 +509,57 @@ select{
     height:auto;
 }
 
-.card-formulario{
+.mascote-lista{
 
-    width:350px;
+    width:100px;
 
-    background:#FAFAFA;
+    right:15px;
 
-    border:1px solid #D1D5DB;
-
-    border-radius:8px;
-
-    padding:20px;
-}
-
-.card-formulario form{
-
-    display:flex;
-    flex-direction:column;
-}
-
-.card-formulario label{
-
-    margin-top:12px;
-    margin-bottom:5px;
-
-    font-size:14px;
-    font-weight:600;
-}
-
-.card-formulario input,
-.card-formulario select{
-
-    height:40px;
-
-    border:1px solid #D1D5DB;
-
-    border-radius:8px;
-
-    padding:0 10px;
-
-    font-size:14px;
-
-    background:white;
-}
-
-.botoes{
-
-    display:flex;
-
-    gap:15px;
-
-    margin-top:25px;
-}
-
-.btn-salvar{
-
-    background:#2563EB;
-    color:white;
-
-    border:none;
-
-    border-radius:8px;
-
-    padding:10px 20px;
-
-    cursor:pointer;
-}
-
-.btn-cancelar{
-
-    background:#DC2626;
-    color:white;
-
-    text-decoration:none;
-
-    border-radius:8px;
-
-    padding:10px 20px;
-
-    display:flex;
-    align-items:center;
+    bottom:15px;
 }
 
 /* =========================
-   LOGIN E CADASTRO
+   CADASTRO ITEM
 ========================= */
 
-.card-login,
-.card-formulario{
+.cadastro-container{
 
-    width: 380px;
+    display:flex;
 
-    background: #FAFAFA;
-
-    border: 1px solid #D1D5DB;
-    border-radius: 8px;
-
-    padding: 25px;
-
-    box-shadow: 0 2px 8px rgba(0,0,0,.05);
+    justify-content:center;
 }
 
-.card-login form,
-.card-formulario form{
+.titulo-form{
 
-    display: flex;
-    flex-direction: column;
+    text-align:center;
+
+    color:#1E3A8A;
+
+    margin-bottom:8px;
 }
 
-.card-login label,
-.card-formulario label{
+.subtitulo-form{
 
-    font-size: 14px;
-    font-weight: 600;
+    text-align:center;
 
-    margin-top: 12px;
-    margin-bottom: 5px;
+    color:#6B7280;
 
-    color: #111827;
+    font-size:14px;
+
+    margin-bottom:25px;
 }
 
-.card-login input,
-.card-formulario input,
-.card-formulario select{
+/* =========================
+   SUBTÍTULO LISTA
+========================= */
 
-    height: 40px;
+.subtitulo-lista{
 
-    border: 1px solid #D1D5DB;
-    border-radius: 8px;
+    color:#6B7280;
 
-    padding: 0 12px;
+    font-size:15px;
 
-    font-size: 14px;
+    margin-top:-15px;
 
-    background: white;
-
-    outline: none;
-}
-
-.card-login input:focus,
-.card-formulario input:focus,
-.card-formulario select:focus{
-
-    border-color: #2563EB;
-}
-
-.botoes{
-
-    display: flex;
-    justify-content: center;
-
-    gap: 15px;
-
-    margin-top: 25px;
-}
-
-.btn-login,
-.btn-salvar{
-
-    background: #2563EB;
-    color: white;
-
-    border: none;
-    border-radius: 8px;
-
-    height: 40px;
-
-    padding: 0 20px;
-
-    cursor: pointer;
-
-    font-weight: 600;
-
-    transition: .3s;
-}
-
-.btn-login:hover,
-.btn-salvar:hover{
-
-    background: #1D4ED8;
-}
-
-.btn-cancelar{
-
-    background: #DC2626;
-    color: white;
-
-    text-decoration: none;
-
-    border-radius: 8px;
-
-    height: 40px;
-
-    padding: 0 20px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-weight: 600;
-
-    transition: .3s;
-}
-
-.btn-cancelar:hover{
-
-    background: #B91C1C;
+    margin-bottom:0;
 }
