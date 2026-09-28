@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almoxarifado TI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">
+            Karsten Tecnologia
+        </div>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="index.html">Lista de Itens</a>
+            <a href="cadastro.html">Cadastrar Item</a>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <div class="topo-pagina">
+
+            <h1>Itens do Almoxarifado TI</h1>
+
+            <a href="cadastro.html" class="btn-novo">
+                + Novo Item
+            </a>
+
+        </div>
+
+        <div class="pesquisa-container">
+
+            <input
+                type="text"
+                id="pesquisa"
+                placeholder="🔍 Pesquisar item..."
+            >
+
+        </div>
+
+        <section class="tabela-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Nome</th>
+                        <th>Quantidade</th>
+                        <th>Categoria</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="tabelaItens">
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+    <img
+        src="img/mascote.png"
+        alt="Mascote KIA"
+        class="mascote"
+    >
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

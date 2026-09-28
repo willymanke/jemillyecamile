@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Novo Item</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo-area">
+
+            <div class="logo">
+                Karsten Tecnologia
+            </div>
+
+            <div class="titulo-header">
+                Itens do Almoxarifado TI
+            </div>
+
+        </div>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="index.html">Lista de Itens</a>
+            <a href="cadastro.html">Cadastrar Item</a>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <h1>Cadastrar Novo Item</h1>
+
+        <section class="card-formulario">
+
+            <form id="formItem">
+
+    <label for="nome">
+        Nome do Item
+    </label>
+
+    <input
+        type="text"
+        id="nome"
+        placeholder="Ex: Mouse Gamer"
+        required
+    >
+
+    <label for="quantidade">
+        Quantidade
+    </label>
+
+    <input
+        type="number"
+        id="quantidade"
+        placeholder="Ex: 10"
+        required
+    >
+
+    <label for="categoria">
+        Categoria
+    </label>
+
+    <input
+        type="text"
+        id="categoria"
+        placeholder="Ex: Periféricos"
+        required
+    >
+
+    <label for="status">
+        Status
+    </label>
+
+    <select id="status">
+
+        <option value="Disponível">
+            Disponível
+        </option>
+
+        <option value="Em Falta">
+            Em Falta
+        </option>
+
+    </select>
+
+    <div class="botoes">
+
+        <button
+            type="submit"
+            class="btn-salvar"
+            id="btnSalvar"
+        >
+            Salvar
+        </button>
+
+        <a
+            href="index.html"
+            class="btn-cancelar"
+        >
+            Cancelar
+        </a>
+
+    </div>
+
+</form>
+
+        </section>
+
+    </main>
+
+    <img
+        src="img/mascote.png"
+        alt="Mascote KIA"
+        class="mascote"
+    >
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
